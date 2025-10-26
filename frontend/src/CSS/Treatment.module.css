@@ -1,0 +1,56 @@
+.treatmentContainer {
+  background-color: #f4f6f9;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.input_box {
+  width: 80px;
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.input_box:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}
+
+.add_btm {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.add_btm:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+.table-responsive {
+  margin-top: 20px;
+}
+
+input[type="search"] {
+  width: 300px;
+  padding: 6px 12px;
+  margin-bottom: 10px;
+  font-size: 0.95rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input[type="search"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.4);
+}

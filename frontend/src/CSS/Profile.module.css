@@ -1,0 +1,54 @@
+.profileCard {
+  width: 350px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #e1e1f0;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  font-family: Arial, sans-serif;
+
+  /* Centering the card */
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  /* Ensuring it stays above other elements */
+  z-index: 1000;
+}
+
+
+.profileHeader {
+  background: linear-gradient(135deg, #4a90e2, #005f99);
+  padding: 20px;
+  border-radius: 8px 8px 0 0;
+  color: rgb(251, 251, 251);
+  margin-top: 10px;
+}
+
+.profileHeader h2 {
+  margin: 10px 0;
+  font-size: 22px;
+}
+
+.profilePic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+
+.category {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.profileInfo {
+  padding: 15px;
+  text-align: left;
+}
+
+.profileInfo p {
+  margin: 8px 0;
+  font-size: 14px;
+}

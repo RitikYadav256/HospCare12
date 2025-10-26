@@ -1,0 +1,107 @@
+/* General Styling */
+main {
+  font-family: "Arial", sans-serif;
+  background-color: #f8f9fa;
+  color: #333;
+  padding-bottom: 40px;
+  margin-top: 70px;
+}
+
+.teammember {
+  margin-top: 70px;
+}
+
+.teammember img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  margin-bottom: 15px;
+}
+
+.teammember h3 {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.teammember p {
+  font-size: 1.1rem;
+  color: #555;
+}
+
+/* Header Section */
+.container.text-center.my-5 {
+  padding: 50px 0;
+}
+
+h1.display-4 {
+  font-weight: 700;
+  color: #004aad;
+}
+
+p.lead {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Featurette Section */
+.featurette {
+  margin: 50px 0;
+}
+
+.featurette-heading {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.featurette img {
+  border-radius: 10px;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Meet Our Team */
+.row .col-lg-4 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.row .col-lg-4 img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.row .col-lg-4 img:hover {
+  transform: scale(1.1);
+}
+
+h3.fw-normal {
+  color: #333;
+  margin-top: 15px;
+}
+
+p {
+  color: #666;
+}
+
+/* Footer */
+footer {
+  background: #004aad;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  margin-top: 50px;
+}
+
+footer a {
+  color: #ffeb3b;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
