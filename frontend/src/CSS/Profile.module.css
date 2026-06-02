@@ -1,54 +1,119 @@
-.profileCard {
-  width: 350px;
+.page {
   padding: 20px;
-  border-radius: 12px;
-  background: #e1e1f0;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  font-family: Arial, sans-serif;
-
-  /* Centering the card */
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  /* Ensuring it stays above other elements */
-  z-index: 1000;
+  background: #f6f9fc;
+  min-height: 100vh;
+  font-family: "Segoe UI", sans-serif;
 }
 
-
-.profileHeader {
-  background: linear-gradient(135deg, #4a90e2, #005f99);
+/* HEADER */
+.hospitalHeader {
+  display: flex;
+  gap: 20px;
   padding: 20px;
-  border-radius: 8px 8px 0 0;
-  color: rgb(251, 251, 251);
-  margin-top: 10px;
+  background: linear-gradient(135deg, #0f766e, #0ea5e9);
+  color: white;
+  border-radius: 18px;
+  align-items: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
 }
 
-.profileHeader h2 {
-  margin: 10px 0;
-  font-size: 22px;
-}
-
-.profilePic {
+.hospitalHeader img {
   width: 100px;
   height: 100px;
   border-radius: 50%;
   border: 3px solid white;
+  object-fit: cover;
 }
 
-.category {
-  font-size: 16px;
-  font-weight: bold;
+.role {
+  opacity: 0.9;
+  margin-top: -5px;
 }
 
-.profileInfo {
+.tags span {
+  display: inline-block;
+  margin-right: 6px;
+  padding: 5px 10px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 20px;
+  font-size: 12px;
+}
+
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.card {
+  background: white;
+  border-radius: 14px;
   padding: 15px;
-  text-align: left;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.06);
 }
 
-.profileInfo p {
-  margin: 8px 0;
-  font-size: 14px;
+.card h3 {
+  margin-bottom: 10px;
+  color: #0f172a;
+}
+
+/* INFO GRID */
+.infoGrid {
+  display: grid;
+  gap: 10px;
+}
+
+.infoGrid div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 6px 0;
+}
+
+.infoGrid span {
+  color: #64748b;
+}
+
+/* VITALS */
+.vitals {
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+
+.vitals div {
+  flex: 1;
+}
+
+.vitals h4 {
+  margin: 0;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.vitals p {
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.low {
+  color: green;
+}
+
+/* LIST */
+.list {
+  padding-left: 18px;
+}
+
+/* FOOTER */
+.footer {
+  margin-top: 20px;
+  text-align: center;
+  padding: 20px;
+  background: #0f172a;
+  color: white;
+  border-radius: 14px;
 }

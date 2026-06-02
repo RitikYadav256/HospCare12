@@ -18,7 +18,7 @@ const FetchAllDoctors = async (req, res) => {
 
 const bookappointment = async (req, res, next) => {
   try {
-   
+      console.log("📥 Booking Appointment");
     const token = req.headers.authorization?.split(" ")[1];
     const verified = jwt.verify(token, process.env.JWT_SECRET);
     if (!verified) {
@@ -28,6 +28,14 @@ const bookappointment = async (req, res, next) => {
     
     const { doctorEmail, doctorOrganization, userEmail, userAge, userMobile, serviceType } = req.body;
 
+    console.log("Received appointment data:", {
+      doctorEmail,
+      doctorOrganization, 
+      userEmail,
+      userAge,
+      userMobile,
+      serviceType
+    });
     
     if (!doctorEmail || !doctorOrganization || !userEmail || !userAge || !userMobile || !serviceType) {
       return res.status(400).json({ message: "All fields are required" });

@@ -1,79 +1,128 @@
 import React from "react";
-import styles from "../CSS/About.module.css"; // Import external module CSS
-import image1 from "../assets/1.webp";
-
-import image3 from "../assets/Family.png";
-import image2 from "../assets/2.webp";
+import styles from "../CSS/About.module.css";
+import { motion } from "framer-motion";
 
 function About() {
+
+  const container = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15
+      }
+    }
+  };
+
+  const item = {
+    hidden: { opacity: 0, y: 40 },
+    show: { opacity: 1, y: 0 }
+  };
+
   return (
     <main className={styles.main}>
-      <div className={`container ${styles.header}`}>
-        <h1 className={styles.title}>About Us</h1>
-        <p className={styles.subtitle}>Learn more about our mission, values, and the team behind HospCare.</p>
-      </div>
 
-      <div className="container marketing">
-        <div className={`row featurette ${styles.featurette}`}>
-          <div className="col-md-7">
-            <h2 className={styles.featuretteHeading}>
-              Our Mission <span>Bringing Healthcare Closer.</span>
-            </h2>
-            <p className="lead">
-              At HospCare, we aim to provide seamless healthcare solutions, ensuring that patients and doctors can
-              connect with ease. Our platform bridges the gap between medical professionals and those in need of care.
-            </p>
-          </div>
-          <div className="col-md-5">
-            <img src={image1} className="img-fluid w-50 h-80" alt="Our Mission" />
-          </div>
+      {/* HERO */}
+      <motion.section
+        className={styles.hero}
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        <div className={styles.heroText}>
+          <h1>🏥 HospCare</h1>
+          <p>AI-Powered Healthcare Platform connecting Patients, Doctors, and Intelligence.</p>
         </div>
 
-        <hr className="featurette-divider" />
+        <motion.img
+          src="https://images.unsplash.com/photo-1588776814546-1ffcf47267a5"
+          alt="hospital"
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: 1.05 }}
+        />
+      </motion.section>
 
-        <div className={`row featurette ${styles.featurette}`}>
-          <div className="col-md-7 order-md-2">
-            <h2 className={styles.featuretteHeading}>
-              Our Vision <span>A Healthier Tomorrow.</span>
-            </h2>
-            <p className="lead">
-              We believe in a world where healthcare is accessible to everyone, powered by technology and innovation.
-              Our team is dedicated to making healthcare appointments, medical history tracking, and patient-doctor
-              communication effortless.
-            </p>
-          </div>
-          <div className="col-md-5 order-md-1">
-            <img src={image2} className="img-fluid w-50 h-80" alt="Our Vision" />
-          </div>
+      {/* MISSION */}
+      <motion.section
+        className={styles.section}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+      >
+        <h2>🎯 Our Mission</h2>
+        <p>
+          HospCare makes healthcare simple, fast, and intelligent using AI-driven diagnosis and automation.
+        </p>
+      </motion.section>
+
+      {/* FEATURES */}
+      <motion.section
+        className={styles.features}
+        variants={container}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+
+        {[
+          { title: "🤖 AI Patient Assistant", desc: "Smart symptom checker and medicine suggestion." },
+          { title: "📅 Appointment System", desc: "Instant doctor booking based on availability." },
+          { title: "💊 Smart Prescription", desc: "AI-based medicine recommendations." },
+          { title: "📊 Doctor Analytics", desc: "Performance tracking & patient recovery insights." },
+          { title: "🩺 Health Dashboard", desc: "Centralized patient health monitoring." },
+          { title: "⏱ Emergency AI Support", desc: "Instant health guidance in critical situations." }
+        ].map((f, i) => (
+          <motion.div
+            className={styles.card}
+            key={i}
+            variants={item}
+            whileHover={{
+              scale: 1.05,
+              boxShadow: "0 10px 25px rgba(0,0,0,0.15)"
+            }}
+          >
+            <h3>{f.title}</h3>
+            <p>{f.desc}</p>
+          </motion.div>
+        ))}
+
+      </motion.section>
+
+      {/* VISION */}
+      <motion.section
+        className={styles.splitSection}
+        initial={{ opacity: 0, x: -40 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        <div>
+          <h2>🌍 Our Vision</h2>
+          <p>
+            A world where healthcare is instant, intelligent, and accessible to everyone.
+          </p>
         </div>
 
-        <hr className="featurette-divider" />
+        <motion.img
+          src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1f"
+          whileHover={{ scale: 1.05 }}
+        />
+      </motion.section>
 
-        {/* Meet Our Team */}
-        <div className={`container text-center my-5 ${styles.teamSection}`}>
-          <h2 className="display-5">Meet Our Team</h2>
-          <p className="lead">Our dedicated professionals working to improve healthcare accessibility.</p>
-        </div>
-
-        <div className={`row ${styles.teammember}`}>
-  <div className="col-12 text-center">
-    <img src={image3} alt="Founder" />
-    <h3>Ritik Yadav</h3>
-    <p>Founder & CEO</p>
-  </div>
-</div>
-
-
-        <hr className="featurette-divider" />
-      </div>
 
       {/* FOOTER */}
-      <footer className={styles.footer}>
-        <p className="float-end">
-          <a href="#">Back to top</a>
-        </p>
-        <p>© 2024 HospCare · <a href="#">Privacy</a> · <a href="#">Terms</a></p>
-      </footer>
+      <motion.footer
+        className={styles.footer}
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+      >
+        <h3>🏥 HospCare</h3>
+        <p>AI-Powered Healthcare Ecosystem</p>
+        <small>© {new Date().getFullYear()} HospCare</small>
+      </motion.footer>
+
     </main>
   );
 }

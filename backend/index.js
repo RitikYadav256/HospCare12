@@ -6,7 +6,7 @@ import data from "./routes/treatment.route.js";
 import connectDB from "./utils/lib.js";
 import { valid } from "./controller/auth.controller.js";
 import Medical from "./routes/Medical.route.js";
-
+import MedicineChatBot from "./controller/MedicineChatBot.js";
 dotenv.config();
 
 const app = express();
@@ -17,6 +17,17 @@ app.use(cors());
 app.use("/api", data);
 app.use("/api/Medical", Medical);
 app.use("/api/auth", authRoutes);
+
+app.post("/api/chatBot", async (req, res) => {
+  const { message } = req.body;
+  try {
+    const result = await MedicineChatBot.generateMedicineSuggestion(message);
+    res.json(result);
+  } catch (err) {
+    res.status(500).json({ error: "Server error" });
+  }
+});
+
 
 app.get("/", (req, res) => {
   res.send("Welcome to the HospCare API!");

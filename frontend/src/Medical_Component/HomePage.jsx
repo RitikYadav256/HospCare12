@@ -45,6 +45,7 @@ function HomePage({ login, setlogin }) {
         }
         const data = await response.json();
         setDoctors(data);
+        console.log("Fetched doctors:", data);  
         setFilteredDoctors(data);
       } catch (error) {
         console.error("Error fetching doctors:", error);
@@ -69,6 +70,7 @@ function HomePage({ login, setlogin }) {
   };
 
   const bookAppointment = (doctor) => {
+    console.log("Selected doctor for appointment:", doctor);
     setSelectedDoctor(doctor);
     setBookAppointment(true);
   };
@@ -142,7 +144,14 @@ function HomePage({ login, setlogin }) {
             ) : (
               <p className={styles.noData}>No doctors available.</p>
             )}
-          </div>
+            </div>
+            
+             {/* HOSPITAL FOOTER */}
+    <div className={styles.footer}>
+      <h3>🏥 HospCare</h3>
+      <p>Advanced AI-powered Healthcare Management System</p>
+      <small>© {new Date().getFullYear()} HospCare • All rights reserved</small>
+    </div>
         </div>
       )}
     </>

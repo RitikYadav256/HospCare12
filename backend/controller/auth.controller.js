@@ -41,20 +41,20 @@ const generateToken = (user) => {
 const signup = async (req, res) => {
   console.log("Asking for signup");
   try {
-    const { firstName, lastName, email, mobile, dob, address, category, password, specialization, organization, organizations } = req.body;
+    const { firstName, lastName, email, mobile, dob, address, category, password, specialization, zone, organizations } = req.body;
 
     // Validate if `specialization` and `organization` are required for doctors
     if (category === "doctor" && (!specialization || specialization.trim() === "")) {
       return res.status(400).json({ message: "Doctor must provide a specialization" });
     }
-    if (category === "doctor" && (!organization || organization.trim() === "")) {
-      return res.status(400).json({ message: "Doctor must provide an organization name" });
+    if (category === "doctor" && (!zone || zone.trim() === "")) {
+      return res.status(400).json({ message: "Doctor must provide a zone" });
     }
 
+    console.log("Received signup data:", req.body);
+
     // Validate if `organizations` is required for medical professionals
-    if (category === "medical" && (!organizations || !Array.isArray(organizations) || organizations.length === 0)) {
-      return res.status(400).json({ message: "Medical users must add at least one organization" });
-    }
+    
 
     // Get uploaded file
     const profilePic = req.file ? req.file.filename : null;
@@ -62,7 +62,7 @@ const signup = async (req, res) => {
     // Connect to Database
     const db = await connectDB();
     const collection = db.collection(category); // Store users in category-specific collections
-
+    
     // Check if user already exists
     const existingUser = await collection.findOne({ email });
     if (existingUser) {
@@ -88,10 +88,10 @@ const signup = async (req, res) => {
       updatedAt: new Date(),
     };
 
-    // Attach `specialization` and `organization` only for doctors
+    // Attach `specialization` and `zone` only for doctors
     if (category === "doctor") {
       newUser.specialization = specialization;
-      newUser.organization = organization;
+      newUser.zone = zone;
     }
 
     // Attach `organizations` only for medical professionals
@@ -102,6 +102,30 @@ const signup = async (req, res) => {
     console.log(newUser);
 
     // Insert user into the database
+    if (category === 'doctor') {
+  const collection2 = db.collection(newUser.zone);
+
+  const result2 = await collection2.updateOne(
+    {}, // single document inside zone
+    {
+      $push: {
+        doctors: {
+          email: newUser.email,
+          firstname: newUser.firstName,
+          lastname: newUser.lastName,
+          specialization: newUser.specialization,
+          totalPatients: []
+        }
+      }
+    },
+    { upsert: true }
+  );
+
+  if (!result2.acknowledged) {
+    return res.status(500).json({ message: "Signup unsuccessful, please retry" });
+  }
+}
+
     const result = await collection.insertOne(newUser);
     if (!result.acknowledged) {
       return res.status(500).json({ message: "Signup unsuccessful, please retry" });
@@ -136,6 +160,8 @@ const login = async (req, res) => {
       collection = db.collection("patient");
     } else if (category === "doctor") {
       collection = db.collection("doctor");
+    } else if (category === "medical") {
+      collection = db.collection("medical");
     } else {
       return res.status(400).json({ message: "Invalid category" });
     }

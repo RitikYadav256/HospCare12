@@ -17,13 +17,14 @@ function Appointment({ doctor, setBookAppointment }) {
     const token = localStorage.getItem("Token"); 
     const appointmentData = {
       doctorEmail: doctor.email,
-      doctorOrganization: doctor.organization,
+      doctorOrganization: doctor.zone,
       userEmail: formData.email,
       userAge: formData.age,
       userMobile: formData.phone,
       serviceType: formData.serviceType,
     };
 
+    console.log("Booking appointment with data:", appointmentData);
     try {
       const token=localStorage.getItem("Token");
       const response = await fetch("http://localhost:5000/api/bookappointment", {
@@ -55,12 +56,12 @@ function Appointment({ doctor, setBookAppointment }) {
   }
 
   return (
+    
     <div className={styles.card}>
       <div className={styles.header}>
         <h2>Appointment Booking</h2>
         <p>Fill out the form to book your appointment.</p>
       </div>
-
       <div className={styles.formContainer}>
         <form className={styles.form} onSubmit={book} noValidate>
           <h4>Personal Information</h4>

@@ -161,3 +161,75 @@
     width: 100%;
   }
 }
+
+
+.footer {
+  margin-top: 25px;
+  padding: 22px 18px;
+  text-align: center;
+
+  /* Hospital-style dark medical theme */
+  background: linear-gradient(135deg, #0f172a, #0b3b5a);
+  color: #ffffff;
+
+  border-radius: 14px;
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle medical glow effect */
+.footer::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.15),
+    transparent 60%
+  );
+  animation: pulseGlow 6s infinite linear;
+}
+
+/* Branding text */
+.footer h3 {
+  margin: 0;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Subtitle */
+.footer p {
+  margin: 6px 0;
+  font-size: 14px;
+  color: #cbd5e1;
+  position: relative;
+  z-index: 1;
+}
+
+/* Copyright */
+.footer small {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  color: #94a3b8;
+  position: relative;
+  z-index: 1;
+}
+
+/* Glow animation */
+@keyframes pulseGlow {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
